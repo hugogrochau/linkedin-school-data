@@ -17,13 +17,18 @@ export const getTotalResults = async (page, companies, schools) => {
   const searchUrl = buildSearchUrl(companies, schools)
   await page.goto(searchUrl)
 
+  const searchResultsPageSelector = '.search-results-page'
   const searchResultsTotalSelector = 'h3.search-results__total'
-  await page.waitForSelector(searchResultsTotalSelector)
+  await page.waitForSelector(searchResultsPageSelector)
 
-  const searchResultsTotal = await page.$eval(searchResultsTotalSelector, el => el.innerHTML)
-  const matchResults = searchResultsTotal.match(/^\s*Showing ([,\d]*) results?\s*$/)
+  try {
+    const searchResultsTotal = await page.$eval(searchResultsTotalSelector, el => el.innerHTML)
+    const matchResults = searchResultsTotal.match(/^\s*Showing ([,\d]*) results?\s*$/)
 
-  const numberOfResults = numbro(matchResults[1]).value()
+    const numberOfResults = numbro(matchResults[1]).value()
 
-  return numberOfResults
+    return numberOfResults
+  } catch (err) {
+    return 0
+  }
 }
