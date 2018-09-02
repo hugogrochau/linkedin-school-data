@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hugogrochau/linkedin-school-data.git"
+    "url": "git@github.com:hugogrochau/linkedin-school-data.git"
   },
   "keywords": [
     "linkedin",
