@@ -20,11 +20,13 @@ export const getCompanyIdsBySchoolName = async (page, schoolName) => {
 }
 
 const getCompanyId = async (page, index) => {
+  await page.waitForSelector(companiesSelector)
   const companyElements = await page.$$(companiesSelector)
   const companyElement = companyElements[index]
 
   await companyElement.click()
-  await page.waitForNavigation()
+  await page.waitForSelector('.org-alumni-insights__selected-filter-item')
+
   const url = await page.url()
   const queryPart = url.split('?')[1]
   const { facetCurrentCompany } = querystring.parse(queryPart)
