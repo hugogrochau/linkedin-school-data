@@ -1,21 +1,14 @@
-import querystring from 'querystring'
-
+import fs from 'fs'
 const buildSchoolUrl = (schoolName) => `https://linkedin.com/school/${schoolName}/`
+const schoolIdRegex = /headquarter","school":"urn:li:fs_normalized_school:(\d*)/
 
 export const getSchoolIdByName = async (page, schoolName) => {
   const schoolUrl = buildSchoolUrl(schoolName)
   await page.goto(schoolUrl)
 
-  const moreDetailsSelector = '.org-company-employees-snackbar__details-highlight'
-  await page.waitForSelector(moreDetailsSelector)
-  await page.click(moreDetailsSelector)
-  await page.waitForNavigation()
+  const content = await page.content()
+  fs.writeFileSync('content.html', content)
+  const [, schoolId] = content.match(schoolIdRegex)
 
-  const url = await page.url()
-  const queryPart = decodeURI(url).split('?')[1]
-  const parseResult = querystring.parse(queryPart)
-  const { facetSchool } = parseResult
-  const cleanSchoolString = facetSchool.replace(/[[\]"]/gi, '')
-
-  return parseInt(cleanSchoolString, 10)
+  return parseInt(schoolId, 10)
 }
