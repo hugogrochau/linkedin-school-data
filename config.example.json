@@ -1,5 +1,5 @@
 {
   "email": "example@email.com",
   "password": "hunter2",
-  "universities": ["puc-rio", "ufrj", "uerj", "estacio", "universidade-federal-fluminense", "universidade-veiga-de-almeida"]
+  "schools": ["puc-rio", "ufrj", "uerj", "estacio", "universidade-federal-fluminense", "universidade-veiga-de-almeida"]
 }

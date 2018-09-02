@@ -8,20 +8,28 @@ if (!fs.existsSync('./config.json')) {
 }
 
 import puppeteer from 'puppeteer'
+import config from '../config'
 import { login } from './login'
-import { alumniAtCompanies } from './alumniAtCompanies'
+// import { alumniAtCompanies } from './alumniAtCompanies'
+import { topCompaniesOfSchools } from './topCompaniesOfSchools'
 
 const start = async () => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--lang=en-US'], headless: false })
   const page = await browser.newPage()
+  await page.setViewport({
+    width: 1920,
+    height: 1080
+  })
 
-  await login(page)
+  await login(page, config.email, config.password)
 
-  const alumniAtCompaniesResult = await alumniAtCompanies(page, ['10582', '10693'], ['1033', '162402'])
+  const topCompaniesOfSchoolsResults = await topCompaniesOfSchools(page, config.schools)
+  fs.writeFileSync('topCompaniesOfSchools.json', JSON.stringify(topCompaniesOfSchoolsResults))
 
-  fs.writeFileSync('alumniAtCompanies.json', JSON.stringify(alumniAtCompaniesResult))
+  // const alumniAtCompaniesResult = await alumniAtCompanies(page, ['10582', '10693'], ['1033', '162402'])
+  // fs.writeFileSync('alumniAtCompanies.json', JSON.stringify(alumniAtCompaniesResult))
 
-  await browser.close()
+  // await browser.close()
 }
 
 start()
