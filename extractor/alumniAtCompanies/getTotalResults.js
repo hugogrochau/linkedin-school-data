@@ -21,7 +21,7 @@ export const getTotalResults = async (page, companies, schools) => {
   await page.waitForSelector(searchResultsTotalSelector)
 
   const searchResultsTotal = await page.$eval(searchResultsTotalSelector, el => el.innerHTML)
-  const matchResults = searchResultsTotal.match(/^\s*Showing ([,\d]*) results\s*$/)
+  const matchResults = searchResultsTotal.match(/^\s*Showing ([,\d]*) results?\s*$/)
 
   const numberOfResults = numbro(matchResults[1]).value()
 
