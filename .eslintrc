@@ -1,0 +1,12 @@
+{
+  "extends": ["standard", "plugin:ramda/recommended"],
+  "plugins": [
+    "ramda"
+  ],
+  "rules": {
+    "object-curly-spacing": ["error", "always"],
+    "no-console": ["error", { "allow": ["warn", "info"] }],
+    "object-shorthand": ["error"],
+    "indent": ["error", 2, { "flatTernaryExpressions": true }]
+  }
+}

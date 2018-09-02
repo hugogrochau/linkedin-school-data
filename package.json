@@ -1,0 +1,47 @@
+{
+  "name": "linkedin-school-data",
+  "version": "1.0.0",
+  "description": "Project to extract and display which universities are represented in different companies",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node ./extractor/index.js",
+    "build": "babel extractor --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugogrochau/linkedin-school-data.git"
+  },
+  "keywords": [
+    "linkedin",
+    "school",
+    "university",
+    "companies",
+    "data",
+    "visualization"
+  ],
+  "author": "Hugo Grochau <hugo@grochau.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hugogrochau/linkedin-school-data/issues"
+  },
+  "homepage": "https://github.com/hugogrochau/linkedin-school-data#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-ramda": "^2.5.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "dependencies": {
+    "p-try": "^2.0.0",
+    "ramda": "^0.25.0"
+  }
+}
