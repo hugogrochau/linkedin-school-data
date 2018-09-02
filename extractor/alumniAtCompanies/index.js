@@ -1,0 +1,1 @@
+export { alumniAtCompanies } from './alumniAtCompanies'

@@ -41,6 +41,7 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "dependencies": {
+    "async": "^2.6.1",
     "chalk": "^2.4.1",
     "numbro": "^2.1.0",
     "p-try": "^2.0.0",
