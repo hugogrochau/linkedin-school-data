@@ -1,6 +1,7 @@
 # Config file
 config.json
-output
+output/*
+!output/.gitkeep
 
 # Build files
 dist

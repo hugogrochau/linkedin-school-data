@@ -11,9 +11,9 @@ if (!fs.existsSync('./config.json')) {
 import puppeteer from 'puppeteer'
 import config from '../config'
 import { login } from './login'
-import { alumniAtCompanies } from './alumniAtCompanies'
-// import { topCompaniesOfSchools } from './topCompaniesOfSchools'
-import topCompaniesOfSchools from '../output/topCompaniesOfSchools.json'
+// import { alumniAtCompanies } from './alumniAtCompanies'
+import { topCompaniesOfSchools } from './topCompaniesOfSchools'
+// import topCompaniesOfSchools from '../output/topCompaniesOfSchools.json'
 
 const start = async () => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--lang=en-US'], headless: false })
@@ -25,15 +25,15 @@ const start = async () => {
 
   await login(page, config.email, config.password)
 
-  // const topCompaniesOfSchoolsResults = await topCompaniesOfSchools(page, config.schools)
-  // fs.writeFileSync(path.resolve('output', 'topCompaniesOfSchools.json'), JSON.stringify(topCompaniesOfSchoolsResults, null, 2))
+  const topCompaniesOfSchoolsResults = await topCompaniesOfSchools(page, config.schools)
+  fs.writeFileSync(path.resolve('output', 'topCompaniesOfSchools.json'), JSON.stringify(topCompaniesOfSchoolsResults, null, 2))
 
-  const schoolIds = Object.values(topCompaniesOfSchools.schools).map(school => school.id)
-  const companyIds = topCompaniesOfSchools.uniqueCompanyIds
+  // const schoolIds = Object.values(topCompaniesOfSchools.schools).map(school => school.id)
+  // const companyIds = topCompaniesOfSchools.uniqueCompanyIds
 
-  const alumniAtCompaniesResult = await alumniAtCompanies(page, schoolIds, companyIds)
+  // const alumniAtCompaniesResult = await alumniAtCompanies(page, schoolIds, companyIds)
 
-  fs.writeFileSync(path.resolve('output', 'alumniAtCompanies.json'), JSON.stringify(alumniAtCompaniesResult, null, 2))
+  // fs.writeFileSync(path.resolve('output', 'alumniAtCompanies.json'), JSON.stringify(alumniAtCompaniesResult, null, 2))
 
   await browser.close()
 }
