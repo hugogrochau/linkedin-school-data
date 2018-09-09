@@ -12,7 +12,7 @@ export const companyData = async (companyIds) => {
   const companies = {}
 
   for (const companyId of companyIds) {
-    const company = await fetchCompanyData(page, companyId)
+    const company = await handleCompany(page, companyId)
     companies[companyId] = company
   }
 
@@ -23,7 +23,7 @@ export const companyData = async (companyIds) => {
   return companies
 }
 
-export const fetchCompanyData = async (page, companyId) => {
+export const handleCompany = async (page, companyId) => {
   logger.debug(`Fetching company data for id: ${companyId}`)
 
   const companyUrl = `https://www.linkedin.com/company/${companyId}/`
@@ -31,13 +31,14 @@ export const fetchCompanyData = async (page, companyId) => {
 
   const nameSelector = 'h1.org-top-card-module__name'
   const industriesSelector = 'span.company-industries'
-  const locationSelector = 'span.org-top-card-module__location'
+  const companyLocationSelector = 'span.org-top-card-module__location'
+  const schoolLocationSelector = 'span.school-location'
 
   await page.waitForSelector(nameSelector)
 
   const name = await getText(page, nameSelector)
   const industries = await getText(page, industriesSelector)
-  const location = await getText(page, locationSelector)
+  const location = await getText(page, companyLocationSelector) || await getText(page, schoolLocationSelector)
   const followers = await getFollowers(page, name)
   const totalEmployees = await getTotalEmployees(page, name)
 
@@ -56,7 +57,7 @@ export const fetchCompanyData = async (page, companyId) => {
 
 const getTotalEmployees = async (page, name) => {
   const totalEmployeesSelector = 'a.org-company-employees-snackbar__details-highlight > strong'
-  const totalEmployeesText = await getText(page, totalEmployeesSelector, /^\s*See all ([,\d]*) employ\s*$/)
+  const totalEmployeesText = await getText(page, totalEmployeesSelector, /\s*See all ([,\d]*) employ\s*/)
 
   if (!totalEmployeesText) {
     logger.warn(`Couldn't get total employees for company ${name}`)
@@ -68,7 +69,7 @@ const getTotalEmployees = async (page, name) => {
 
 const getFollowers = async (page, name) => {
   const followersSelector = 'span.org-top-card-module__followers-count'
-  const followersText = await getText(page, followersSelector, /^\s*([,\d]*) follower\s*$/)
+  const followersText = await getText(page, followersSelector, /\s*([,\d]*) follower\s*/)
 
   if (!followersText) {
     logger.warn(`Couldn't get followers for company ${name}`)

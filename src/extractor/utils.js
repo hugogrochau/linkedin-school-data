@@ -8,16 +8,16 @@ export const getText = async (page, selector, regex) => {
     const result = await page.$eval(selector, el => el.textContent)
 
     if (!regex) {
-      return result
+      return result.trim()
     }
 
     const matchResults = result.match(regex)
     if (!matchResults) {
-      return false
+      return null
     }
 
-    return matchResults[1]
+    return matchResults[1].trim()
   } catch (err) {
-    return false
+    return null
   }
 }
