@@ -22,7 +22,7 @@ export const companyData = async (companyIds) => {
 
       companies[companyId] = company
     } catch (err) {
-      logger.warn(`Couldn't fetch company data for companyId ${companyId}`)
+      logger.warn(`Couldn't fetch company data for companyId ${companyId}`, err)
     }
   }
 
@@ -34,15 +34,18 @@ export const companyData = async (companyIds) => {
 }
 
 export const fetchCompanyData = async (page, companyId) => {
-  logger.debug(`Fetching company data for id: ${companyId}`)
+  logger.debug(`Fetching company (id:${companyId}) data`)
 
   const companyUrl = `https://www.linkedin.com/company/${companyId}/`
   await page.goto(companyUrl)
 
   await page.waitForSelector(nameSelector, { timeout: 5000 })
   const name = await getText(page, nameSelector)
-  const industries = await getText(page, industriesSelector)
-  const location = await getText(page, companyLocationSelector) || await getText(page, schoolLocationSelector)
+
+  const industries = await getIndustries(page, name)
+
+  const location = await getLocation(page, name)
+
   const followers = await getFollowers(page, name)
   const employees = await getEmployees(page, name)
 
@@ -57,6 +60,42 @@ export const fetchCompanyData = async (page, companyId) => {
   logger.debug(`Fetched company data`, companyData)
 
   return companyData
+}
+
+const isSchool = async (page) => {
+  const url = await page.url()
+  return url.includes('linkedin.com/school')
+}
+
+const getIndustries = async (page, name) => {
+  const isSchoolPage = await isSchool(page)
+  if (isSchoolPage) {
+    logger.debug(`Skipping industries for school ${name}`)
+    return null
+  }
+
+  try {
+    const industries = await getText(page, industriesSelector)
+    return industries
+  } catch (err) {
+    logger.warn(`Couldn't get industries for ${name}`, err)
+    return null
+  }
+}
+
+const getLocation = async (page, name) => {
+  const isSchoolPage = await isSchool(page)
+
+  try {
+    const location = isSchoolPage
+      ? await getText(page, schoolLocationSelector)
+      : await getText(page, companyLocationSelector)
+
+    return location
+  } catch (err) {
+    logger.warn(`Couldn't get location for ${name}`, err)
+    return null
+  }
 }
 
 const getEmployees = async (page, name) => {
