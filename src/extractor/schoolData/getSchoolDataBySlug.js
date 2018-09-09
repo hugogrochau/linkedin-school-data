@@ -31,11 +31,11 @@ const fetchSchoolData = async (page, schoolSlug) => {
 
   await page.waitForSelector(nameSelector, { timeout: 5000 })
   const name = await getText(page, nameSelector)
-  const id = await getSchoolId(page)
   const location = await getText(page, locationSelector)
   const followers = await getNumberFromPage(page, schoolSlug, 'followers', followersSelector, followersRegex)
   const employees = await getNumberFromPage(page, schoolSlug, 'employees', employeesSelector, employeesRegex)
   const alumni = await getNumberFromPage(page, schoolSlug, 'alumni', alumniSelector, alumniRegex)
+  const id = await getSchoolId(page)
 
   const schoolData = {
     name,
@@ -50,7 +50,7 @@ const fetchSchoolData = async (page, schoolSlug) => {
 }
 
 const getSchoolId = async (page) => {
-  const schoolIdRegex = /headquarter","school":"urn:li:fs_normalized_school:(\d*)/
+  const schoolIdRegex = /"school":"urn:li:fs_normalized_school:(\d*)/
   const content = await page.content()
   const [, schoolId] = content.match(schoolIdRegex)
 

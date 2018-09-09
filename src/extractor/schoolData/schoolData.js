@@ -1,4 +1,3 @@
-import * as R from 'ramda'
 
 import config from '../../../config.json'
 import { logger } from '../../logger'
@@ -26,16 +25,9 @@ export const schoolData = async (schoolSlugs) => {
     }
   }
 
-  const uniqueCompanyIds = R.pipe(
-    R.values,
-    R.pluck('companyIds'),
-    R.flatten,
-    R.uniq
-  )(schools)
-
   if (config.closeBrowser) {
     await browser.close()
   }
 
-  return { schools, uniqueCompanyIds }
+  return schools
 }
