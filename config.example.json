@@ -1,5 +1,7 @@
 {
+  "version": "0.0.1",
   "email": "example@email.com",
   "password": "hunter2",
-  "schools": ["puc-rio", "ufrj", "uerj", "estacio", "universidade-federal-fluminense", "universidade-veiga-de-almeida"]
+  "schools": ["puc-rio", "ufrj", "uerj", "estacio", "universidade-federal-fluminense", "universidade-veiga-de-almeida"],
+  "closeBrowser": false
 }

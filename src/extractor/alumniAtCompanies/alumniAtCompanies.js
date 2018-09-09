@@ -1,8 +1,14 @@
-import { getTotalResults } from './getTotalResults'
 import fs from 'fs'
 import path from 'path'
 
-export const alumniAtCompanies = async (page, schoolIds, companyIds) => {
+import { getTotalResults } from './getTotalResults'
+import { launchBrowser } from '../launchBrowser'
+import { login } from '../login'
+import config from '../../../config.json'
+
+export const alumniAtCompanies = async (schoolIds, companyIds) => {
+  const { page, browser } = await launchBrowser()
+  await login(page, config.email, config.password)
   const schools = {}
 
   for (const schoolId of schoolIds) {
@@ -12,6 +18,10 @@ export const alumniAtCompanies = async (page, schoolIds, companyIds) => {
 
     console.info(`Finished fetching companies for school ${schoolId}`)
     fs.writeFileSync(path.resolve('output', `alumniAtCompaniesFromSchoolUntil${schoolId}.json`), JSON.stringify(schools, null, 2))
+  }
+
+  if (config.closeBrowser) {
+    await browser.close()
   }
 
   return schools

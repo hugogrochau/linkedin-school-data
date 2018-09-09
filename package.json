@@ -2,11 +2,11 @@
   "name": "linkedin-school-data",
   "version": "1.0.0",
   "description": "Project to extract and display which universities are represented in different companies",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node ./extractor/index.js",
+    "start": "babel-node ./src/index.js",
     "build": "babel extractor --out-dir dist"
   },
   "repository": {
@@ -43,6 +43,7 @@
   "dependencies": {
     "async": "^2.6.1",
     "chalk": "^2.4.1",
+    "commander": "^2.18.0",
     "numbro": "^2.1.0",
     "p-try": "^2.0.0",
     "puppeteer": "^1.7.0",

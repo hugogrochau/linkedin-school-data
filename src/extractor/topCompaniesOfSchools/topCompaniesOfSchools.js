@@ -1,8 +1,15 @@
 import * as R from 'ramda'
+
+import config from '../../../config.json'
+import { launchBrowser } from '../launchBrowser'
 import { getCompanyIdsBySchoolName } from './getCompanyIdsBySchoolName'
 import { getSchoolIdByName } from './getSchoolIdByName'
+import { login } from '../login'
 
-export const topCompaniesOfSchools = async (page, schoolNames) => {
+export const topCompaniesOfSchools = async (schoolNames) => {
+  const { page, browser } = await launchBrowser()
+  await login(page, config.email, config.password)
+
   const schools = {}
   for (const schoolName of schoolNames) {
     const id = await getSchoolIdByName(page, schoolName)
@@ -16,6 +23,10 @@ export const topCompaniesOfSchools = async (page, schoolNames) => {
     R.flatten,
     R.uniq
   )(schools)
+
+  if (config.closeBrowser) {
+    await browser.close()
+  }
 
   return { schools, uniqueCompanyIds }
 }
