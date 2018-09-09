@@ -9,15 +9,16 @@ import { alumniAtCompanies as run } from '../../extractor/alumniAtCompanies'
 export const alumniAtCompanies = async () => {
   if (
     !fs.existsSync(path.resolve('output', 'schoolData.json')) ||
-    !fs.existsSync(path.resolve('output', 'companyIds.json'))
+    !fs.existsSync(path.resolve('output', 'companyData.json'))
   ) {
-    logger.error('Please run schoolData before running alumniAtCompanies')
+    logger.error('Please run schoolData and companyData before running alumniAtCompanies')
     process.exit(1)
   }
 
   const schoolData = require('../../../output/schoolData.json')
-  const companyIds = require('../../../output/companyIds.json')
-  const schoolIds = Object.keys(schoolData.schools)
+  const companyData = require('../../../output/companyData.json')
+  const schoolIds = Object.keys(schoolData)
+  const companyIds = Object.keys(companyData)
 
   const output = await run(schoolIds, companyIds)
 

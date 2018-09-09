@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
+import { logger } from '../../logger'
 import { getTotalResults } from './getTotalResults'
 import { launchBrowser } from '../launchBrowser'
 import { login } from '../login'
@@ -12,11 +13,12 @@ export const alumniAtCompanies = async (schoolIds, companyIds) => {
   const schools = {}
 
   for (const schoolId of schoolIds) {
-    console.info(`Started fetching companies for school ${schoolId}`)
-    const numberOfAlumni = await getAlumniAtCompaniesBySchool(page, schoolId, companyIds)
-    schools[schoolId] = numberOfAlumni
+    logger.debug(`Started fetching alumnis for school ${schoolId}`)
+    const alumniFromSchool = await getAlumniAtCompaniesBySchool(page, schoolId, companyIds)
+    schools[schoolId] = alumniFromSchool
 
-    console.info(`Finished fetching companies for school ${schoolId}`)
+    logger.debug(`Finished fetching alumnis for school ${schoolId}`, alumniFromSchool)
+
     fs.writeFileSync(path.resolve('output', `alumniAtCompaniesFromSchoolUntil${schoolId}.json`), JSON.stringify(schools, null, 2))
   }
 
@@ -31,10 +33,10 @@ const getAlumniAtCompaniesBySchool = async (page, schoolId, companyIds) => {
   const companies = {}
 
   for (const companyId of companyIds) {
-    console.info(`Started fetching alumni for company ${companyId} and school ${schoolId}`)
-    const total = await getTotalResults(page, [companyId], [schoolId])
-    companies[companyId] = total
-    console.info(`Finished fetching alumni for company ${companyId} and school ${schoolId} with ${total} results`)
+    logger.debug(`Started fetching alumni for company ${companyId} and school ${schoolId}`)
+    const totalResults = await getTotalResults(page, [companyId], [schoolId])
+    companies[companyId] = totalResults
+    logger.debug(`Finished fetching alumni for company ${companyId} and school ${schoolId} with ${totalResults} results`)
   }
 
   return companies
