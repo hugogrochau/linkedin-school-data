@@ -34,7 +34,9 @@ const getAlumniAtCompaniesBySchool = async (page, schoolId, companyIds) => {
 
   for (const companyId of companyIds) {
     logger.debug(`Started fetching alumni for company ${companyId} and school ${schoolId}`)
-    const totalResults = await getTotalResults(page, [companyId], [schoolId])
+
+    const { useITFilters } = config
+    const totalResults = await getTotalResults(page, [companyId], [schoolId], { useITFilters })
     companies[companyId] = totalResults
     logger.debug(`Finished fetching alumni for company ${companyId} and school ${schoolId} with ${totalResults} results`)
   }

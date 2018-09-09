@@ -3,5 +3,6 @@
   "email": "example@email.com",
   "password": "hunter2",
   "schools": ["estacio", "universidade-federal-do-estado-do-rio-de-janeiro", "puc-rio", "ufrj", "uerj", "universidade-federal-fluminense", "universidade-veiga-de-almeida"],
-  "closeBrowser": false
+  "closeBrowser": false,
+  "useITFilters": false
 }

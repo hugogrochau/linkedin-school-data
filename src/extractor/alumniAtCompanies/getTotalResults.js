@@ -5,16 +5,23 @@ const idsToQueryPart = (ids) => {
   return `[${joinedIds}]`
 }
 
-const buildSearchUrl = (companies, schools) => {
+const buildSearchUrl = (companies, schools, useITFilters) => {
+  const itIndustries = [96, 4, 6, 109, 118, 3, 5, 84]
+  const industryIds = idsToQueryPart(itIndustries)
   const companyIds = idsToQueryPart(companies)
   const schoolIds = idsToQueryPart(schools)
-  const searchUrl = encodeURI(`https://www.linkedin.com/search/results/people/?company=&facetCurrentCompany=${companyIds}&facetSchool=${schoolIds}&firstName=&lastName=&origin=FACETED_SEARCH&school=&title=`)
+
+  const informationTechnologyFilters = useITFilters
+    ? `&facetIndustry=${industryIds}`
+    : ''
+
+  const searchUrl = encodeURI(`https://www.linkedin.com/search/results/people/?company=&facetCurrentCompany=${companyIds}${informationTechnologyFilters}&facetSchool=${schoolIds}&firstName=&lastName=&origin=FACETED_SEARCH&school=&title=`)
 
   return searchUrl
 }
 
-export const getTotalResults = async (page, companies, schools) => {
-  const searchUrl = buildSearchUrl(companies, schools)
+export const getTotalResults = async (page, companies, schools, options) => {
+  const searchUrl = buildSearchUrl(companies, schools, options.useITFilters)
   await page.goto(searchUrl)
 
   const searchResultsPageSelector = '.search-results-page'
