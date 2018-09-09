@@ -17,10 +17,13 @@ export const schoolData = async (schoolSlugs) => {
 
     const schoolData = await getSchoolDataBySlug(page, schoolSlug)
     const companyIds = await getCompanyIdsBySchoolSlug(page, schoolSlug)
-    const extendedSchoolData = { slug: schoolSlug, ...schoolData, companyIds }
 
-    schools[schoolData.id] = extendedSchoolData
-    logger.debug(`Fetched school data for ${schoolSlug}`, extendedSchoolData)
+    if (schoolData !== null && companyIds !== null) {
+      const extendedSchoolData = { slug: schoolSlug, ...schoolData, companyIds }
+
+      schools[schoolData.id] = extendedSchoolData
+      logger.debug(`Fetched school data for ${schoolSlug}`, extendedSchoolData)
+    }
   }
 
   const uniqueCompanyIds = R.pipe(

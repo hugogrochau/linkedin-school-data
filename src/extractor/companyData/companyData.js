@@ -6,14 +6,24 @@ import { logger } from '../../logger'
 import { launchBrowser } from '../launchBrowser'
 import { login } from '../login'
 
+const nameSelector = 'h1.org-top-card-module__name'
+const industriesSelector = 'span.company-industries'
+const companyLocationSelector = 'span.org-top-card-module__location'
+const schoolLocationSelector = 'span.school-location'
+
 export const companyData = async (companyIds) => {
   const { page, browser } = await launchBrowser()
   await login(page, config.email, config.password)
   const companies = {}
 
   for (const companyId of companyIds) {
-    const company = await handleCompany(page, companyId)
-    companies[companyId] = company
+    try {
+      const company = await fetchCompanyData(page, companyId)
+
+      companies[companyId] = company
+    } catch (err) {
+      logger.warn(`Couldn't fetch company data for companyId ${companyId}`)
+    }
   }
 
   if (config.closeBrowser) {
@@ -23,19 +33,13 @@ export const companyData = async (companyIds) => {
   return companies
 }
 
-export const handleCompany = async (page, companyId) => {
+export const fetchCompanyData = async (page, companyId) => {
   logger.debug(`Fetching company data for id: ${companyId}`)
 
   const companyUrl = `https://www.linkedin.com/company/${companyId}/`
   await page.goto(companyUrl)
 
-  const nameSelector = 'h1.org-top-card-module__name'
-  const industriesSelector = 'span.company-industries'
-  const companyLocationSelector = 'span.org-top-card-module__location'
-  const schoolLocationSelector = 'span.school-location'
-
-  await page.waitForSelector(nameSelector)
-
+  await page.waitForSelector(nameSelector, { timeout: 5000 })
   const name = await getText(page, nameSelector)
   const industries = await getText(page, industriesSelector)
   const location = await getText(page, companyLocationSelector) || await getText(page, schoolLocationSelector)

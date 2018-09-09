@@ -13,6 +13,10 @@ const formatLogObjects = (logObjects) => {
   }
 
   return logObjects.reduce((accumulator, currentValue) => {
+    if (currentValue instanceof Error) {
+      return accumulator.concat(currentValue.stack)
+    }
+
     const stringifiedCurrentValue = JSON.stringify(currentValue, null, 2)
 
     return accumulator.concat('\n', stringifiedCurrentValue)

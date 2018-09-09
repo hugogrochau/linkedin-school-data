@@ -15,19 +15,27 @@ const employeesRegex = /\s*See all ([,\d]*) employ\s*/
 const alumniSelector = 'span.school-alumni'
 const alumniRegex = /\s*([,\d]*)\+ alumni\s*/
 
-export const getSchoolDataBySlug = async (page, schoolName) => {
-  const schoolUrl = `https://linkedin.com/school/${schoolName}/`
+export const getSchoolDataBySlug = async (page, schoolSlug) => {
+  try {
+    const schoolData = await fetchSchoolData(page, schoolSlug)
+    return schoolData
+  } catch (err) {
+    logger.warn(`Couldn't fetch school data for school ${schoolSlug}`, err)
+    return null
+  }
+}
 
+const fetchSchoolData = async (page, schoolSlug) => {
+  const schoolUrl = `https://linkedin.com/school/${schoolSlug}/`
   await page.goto(schoolUrl)
 
-  await page.waitForSelector(nameSelector)
-
+  await page.waitForSelector(nameSelector, { timeout: 5000 })
   const name = await getText(page, nameSelector)
   const id = await getSchoolId(page)
   const location = await getText(page, locationSelector)
-  const followers = await getNumberFromPage(page, schoolName, 'followers', followersSelector, followersRegex)
-  const employees = await getNumberFromPage(page, schoolName, 'employees', employeesSelector, employeesRegex)
-  const alumni = await getNumberFromPage(page, schoolName, 'alumni', alumniSelector, alumniRegex)
+  const followers = await getNumberFromPage(page, schoolSlug, 'followers', followersSelector, followersRegex)
+  const employees = await getNumberFromPage(page, schoolSlug, 'employees', employeesSelector, employeesRegex)
+  const alumni = await getNumberFromPage(page, schoolSlug, 'alumni', alumniSelector, alumniRegex)
 
   const schoolData = {
     name,
