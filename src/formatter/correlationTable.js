@@ -1,4 +1,3 @@
-
 export const correlationTable = (schoolData, companyData, alumniAtCompanies) => {
   const firstCompanies = Object.values(alumniAtCompanies)[0]
   const companyIds = Object.keys(firstCompanies)
