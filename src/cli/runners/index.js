@@ -1,10 +1,10 @@
 import { alumniAtCompanies } from './alumniAtCompanies'
-import { topCompaniesOfSchools } from './topCompaniesOfSchools'
+import { schoolData } from './schoolData'
 import { companyData } from './companyData'
 
 const runners = {
   alumniAtCompanies,
-  topCompaniesOfSchools,
+  schoolData,
   companyData
 }
 

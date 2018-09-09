@@ -1,0 +1,1 @@
+export { schoolData } from './schoolData'

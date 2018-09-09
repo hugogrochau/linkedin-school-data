@@ -40,31 +40,31 @@ export const handleCompany = async (page, companyId) => {
   const industries = await getText(page, industriesSelector)
   const location = await getText(page, companyLocationSelector) || await getText(page, schoolLocationSelector)
   const followers = await getFollowers(page, name)
-  const totalEmployees = await getTotalEmployees(page, name)
+  const employees = await getEmployees(page, name)
 
   const companyData = {
     name,
     industries,
     location,
     followers,
-    totalEmployees
+    employees
   }
 
-  logger.debug(`Fetched company data companyData`, companyData)
+  logger.debug(`Fetched company data`, companyData)
 
   return companyData
 }
 
-const getTotalEmployees = async (page, name) => {
-  const totalEmployeesSelector = 'a.org-company-employees-snackbar__details-highlight > strong'
-  const totalEmployeesText = await getText(page, totalEmployeesSelector, /\s*See all ([,\d]*) employ\s*/)
+const getEmployees = async (page, name) => {
+  const employeesSelector = 'a.org-company-employees-snackbar__details-highlight > strong'
+  const employeesText = await getText(page, employeesSelector, /\s*See all ([,\d]*) employ\s*/)
 
-  if (!totalEmployeesText) {
-    logger.warn(`Couldn't get total employees for company ${name}`)
+  if (!employeesText) {
+    logger.warn(`Couldn't get employees for company ${name}`)
     return 0
   }
 
-  return numbro(totalEmployeesText).value()
+  return numbro(employeesText).value()
 }
 
 const getFollowers = async (page, name) => {

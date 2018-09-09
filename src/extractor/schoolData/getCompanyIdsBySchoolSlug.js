@@ -3,7 +3,7 @@ import querystring from 'querystring'
 const buildAlumniUrl = (schoolName) => `https://linkedin.com/school/${schoolName}/alumni/`
 const companiesSelector = '.org-alumni-bar-graph-module__current-company > .insight-container > .org-bar-graph-element--is-selectable'
 
-export const getCompanyIdsBySchoolName = async (page, schoolName) => {
+export const getCompanyIdsBySchoolSlug = async (page, schoolName) => {
   const alumniUrl = buildAlumniUrl(schoolName)
   await page.goto(alumniUrl)
   await page.waitForSelector(companiesSelector)

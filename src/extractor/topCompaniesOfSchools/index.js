@@ -1,1 +1,0 @@
-export { topCompaniesOfSchools } from './topCompaniesOfSchools'
