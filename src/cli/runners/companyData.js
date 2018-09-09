@@ -7,13 +7,12 @@ import { logger } from '../../logger'
 import { companyData as run } from '../../extractor/companyData'
 
 export const companyData = async () => {
-  if (!fs.existsSync(path.resolve('output', 'schoolData.json'))) {
+  if (!fs.existsSync(path.resolve('output', 'companyIds.json'))) {
     logger.error('Please run schoolData before running companydata')
     process.exit(1)
   }
 
-  const schoolData = require('../../../output/schoolData.json')
-  const companyIds = schoolData.uniqueCompanyIds
+  const companyIds = require('../../../output/companyIds.json')
 
   const output = await run(companyIds)
 
