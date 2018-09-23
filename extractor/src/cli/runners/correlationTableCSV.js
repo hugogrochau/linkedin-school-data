@@ -4,15 +4,15 @@ import fs from 'fs'
 import path from 'path'
 import { logger } from '../../logger'
 
-import { correlationTable as run } from '../../formatter/correlationTable'
+import { correlationTable as run } from '../../formatter/correlationTableCSV'
 
-export const correlationTable = async () => {
+export const correlationTableCSV = async () => {
   if (
     !fs.existsSync(path.resolve('output', 'schoolData.json')) ||
     !fs.existsSync(path.resolve('output', 'companyData.json')) ||
     !fs.existsSync(path.resolve('output', 'alumniAtCompanies.json'))
   ) {
-    logger.error('Please run schoolData, companyData and alumniAtCompanies before running correlationTable')
+    logger.error('Please run schoolData, companyData and alumniAtCompanies before running correlationTableCSV')
     process.exit(1)
   }
 

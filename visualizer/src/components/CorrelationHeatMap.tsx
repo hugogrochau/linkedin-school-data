@@ -1,4 +1,5 @@
 import * as React from 'react'
+import correlationTable from '../data/correlationTable.json'
 import ReactHighcharts from 'react-highcharts'
 import HeatMap from 'highcharts/modules/heatmap'
 HeatMap(ReactHighcharts.Highcharts)
@@ -12,17 +13,18 @@ const formatter = function (this: any) {
 const config = {
   chart: {
     type: 'heatmap',
+    height: 2000,
     plotBorderWidth: 1
   },
   title: {
     text: 'Correlação entre empresas e faculdades'
   },
   xAxis: {
-    categories: ['PUC-RIO', 'UFRJ']
+    categories: correlationTable.schools,
+    opposite: true
   },
   yAxis: {
-    categories: ['Petrobras', 'Ambev'],
-    title: null
+    categories: correlationTable.companies
   },
   colorAxis: {
     min: 0,
@@ -43,7 +45,7 @@ const config = {
   series: [{
     name: 'Correlação entre empresas e faculdades',
     borderWidth: 1,
-    data: [[0, 0, 10], [0, 1, 19], [1, 0, 20], [1, 1, 30]]
+    data: correlationTable.correlation
   }]
 }
 
