@@ -24,5 +24,8 @@
       "check-type-operator"
     ]
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "include": [
+    "src/**/*.ts"
+  ]
 }
