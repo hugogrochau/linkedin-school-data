@@ -1,5 +1,5 @@
 import * as React from 'react'
-import correlationTable from '../data/correlationTable.json'
+import correlationTable from '../../../data/correlationTable.json'
 import ReactHighcharts from 'react-highcharts'
 import HeatMap from 'highcharts/modules/heatmap'
 HeatMap(ReactHighcharts.Highcharts)
