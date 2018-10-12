@@ -49,7 +49,11 @@ const config = {
   }]
 }
 
-export class CorrelationHeatMap extends React.PureComponent {
+interface Props {
+  industry: string | null
+}
+
+export class CorrelationHeatMap extends React.PureComponent<Props> {
   render () {
     return (
       <ReactHighcharts config={config}/>
