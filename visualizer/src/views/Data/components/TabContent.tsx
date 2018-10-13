@@ -3,7 +3,7 @@ import { CorrelationHeatMap } from './CorrelationHeatMap'
 import { Text } from 'grommet'
 
 interface Props {
-  activeIndex: number
+  activeTab: string
 }
 
 interface State {
@@ -11,13 +11,21 @@ interface State {
 
 export class TabContent extends React.PureComponent<Props, State> {
   render () {
-    const { activeIndex } = this.props
+    const { activeTab } = this.props
 
-    if (activeIndex === 0) {
+    if (activeTab === 'correlation') {
       return (<CorrelationHeatMap industry='technology' />)
     }
 
-    return (<Text>empty</Text>)
+    if (activeTab === 'companies') {
+      return (<Text>companies</Text>)
+    }
+
+    if (activeTab === 'schools') {
+      return (<Text>companies</Text>)
+    }
+
+    throw new Error(`Invalid tab ${activeTab}`)
   }
 
 }

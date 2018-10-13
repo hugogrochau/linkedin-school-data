@@ -7,7 +7,7 @@ interface Props {
 }
 
 interface State {
-  activeIndex: number
+  activeTab: string
 }
 
 const industryLabels = {
@@ -15,26 +15,37 @@ const industryLabels = {
   all: 'Todas'
 }
 
+type Tabs = { [key: number]: string }
+
+const tabs: Tabs = {
+  0: 'correlation',
+  1: 'companies',
+  2: 'schools'
+}
+
 export class Data extends React.PureComponent<Props, State> {
   state = {
-    activeIndex: 0
+    activeTab: tabs[0]
+  }
+
+  updateActiveTab = (activeIndex: number) => {
+    this.setState({ activeTab: tabs[activeIndex || 0] })
   }
 
   render () {
     const { industry } = this.props
-    const { activeIndex } = this.state
+    const { activeTab } = this.state
 
     return (
-      <Box>
-        <Heading>{industryLabels[industry || 'all']}</Heading>
-        <Tabs onActive={activeIndex => this.setState({ activeIndex })}>
+      <Box align='center'>
+        <Heading>Indústria: {industryLabels[industry || 'all']}</Heading>
+        <Tabs onActive={this.updateActiveTab}>
           <Tab title='Tabela de correlação' />
           <Tab title='Empresas' />
           <Tab title='Faculdades' />
         </Tabs>
-        <Text>{activeIndex}</Text>
 
-        <TabContent activeIndex={activeIndex} />
+        <TabContent activeTab={activeTab} />
       </Box>
     )
   }
