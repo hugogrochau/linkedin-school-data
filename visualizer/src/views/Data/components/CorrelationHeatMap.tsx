@@ -2,6 +2,7 @@ import * as React from 'react'
 import correlationTable from '../../../data/correlationTable.json'
 import ReactHighcharts from 'react-highcharts'
 import HeatMap from 'highcharts/modules/heatmap'
+import { DataByIndustryContext } from '../../../data/dataByIndustry'
 HeatMap(ReactHighcharts.Highcharts)
 
 const formatter = function (this: any) {
@@ -10,7 +11,7 @@ const formatter = function (this: any) {
   )
 }
 
-const config = {
+const config = (correlation: any) => ({
   chart: {
     type: 'heatmap',
     height: 2000,
@@ -20,11 +21,11 @@ const config = {
     text: 'Correlação entre empresas e faculdades'
   },
   xAxis: {
-    categories: correlationTable.schools,
+    categories: correlation.schools,
     opposite: true
   },
   yAxis: {
-    categories: correlationTable.companies
+    categories: correlation.companies
   },
   colorAxis: {
     min: 0,
@@ -45,9 +46,9 @@ const config = {
   series: [{
     name: 'Correlação entre empresas e faculdades',
     borderWidth: 1,
-    data: correlationTable.correlation
+    data: correlation.correlation
   }]
-}
+})
 
 interface Props {
   industry: string | null
@@ -56,7 +57,9 @@ interface Props {
 export class CorrelationHeatMap extends React.PureComponent<Props> {
   render () {
     return (
-      <ReactHighcharts config={config}/>
+      <DataByIndustryContext.Consumer>
+        {dataByIndustry => <ReactHighcharts config={config(dataByIndustry.correlation)}/>}
+      </DataByIndustryContext.Consumer>
     )
   }
 }
