@@ -1,0 +1,331 @@
+{
+  "1009": {
+    "name": "IBM",
+    "industries": "Information Technology and Services",
+    "location": "Armonk, New York, NY",
+    "followers": 4777434,
+    "employees": 572958
+  },
+  "1073": {
+    "name": "EY",
+    "industries": "Accounting",
+    "location": "London",
+    "followers": 2397367,
+    "employees": 263890
+  },
+  "1271": {
+    "name": "Shell",
+    "industries": "Oil & Energy",
+    "location": "The Hague",
+    "followers": 2507574,
+    "employees": 129359
+  },
+  "1399": {
+    "name": "GSK",
+    "industries": "Pharmaceuticals",
+    "location": "Brentford, Middlesex",
+    "followers": 1299896,
+    "employees": 92812
+  },
+  "1441": {
+    "name": "Google",
+    "industries": "Internet",
+    "location": "Mountain View, CA",
+    "followers": 8482559,
+    "employees": 150513
+  },
+  "1662": {
+    "name": "L'Oréal",
+    "industries": "Cosmetics",
+    "location": "Paris",
+    "followers": 1511154,
+    "employees": 69997
+  },
+  "1694": {
+    "name": "The Coca-Cola Company",
+    "industries": "Food & Beverages",
+    "location": "Atlanta, GA",
+    "followers": 1788180,
+    "employees": 67056
+  },
+  "3721": {
+    "name": "Oi S.A",
+    "industries": "Telecommunications",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 142608,
+    "employees": 12985
+  },
+  "4101": {
+    "name": "Michelin",
+    "industries": "Automotive",
+    "location": "Clermont-Ferrand, Auvergne",
+    "followers": 238382,
+    "employees": 29324
+  },
+  "4120": {
+    "name": "Petrobras",
+    "industries": "Oil & Energy",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 861122,
+    "employees": 58440
+  },
+  "4206": {
+    "name": "Telefônica Brasil",
+    "industries": "Telecommunications",
+    "location": "São Paulo, SP",
+    "followers": 150626,
+    "employees": 16688
+  },
+  "7293": {
+    "name": "Rede Globo",
+    "industries": "Broadcast Media",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 345509,
+    "employees": 10250
+  },
+  "8175": {
+    "name": "FGV - Fundação Getulio Vargas",
+    "industries": null,
+    "location": "Brazil",
+    "followers": 824741,
+    "employees": 6959
+  },
+  "9966": {
+    "name": "Liq",
+    "industries": "Information Technology and Services",
+    "location": "São Paulo, SP",
+    "followers": 115617,
+    "employees": 14215
+  },
+  "10578": {
+    "name": "Universidade Federal do Rio de Janeiro",
+    "industries": null,
+    "location": "Rio de Janeiro, RJ",
+    "followers": 166443,
+    "employees": 8715
+  },
+  "10870": {
+    "name": "B2W Digital",
+    "industries": "Internet",
+    "location": "Rio de Janeiro, RJ",
+    "followers": 101476,
+    "employees": 4835
+  },
+  "13998": {
+    "name": "Petróleo Ipiranga",
+    "industries": "Oil & Energy",
+    "location": "Rio de Janeiro, RJ",
+    "followers": 104702,
+    "employees": 2925
+  },
+  "15226": {
+    "name": "Cencosud S.A.",
+    "industries": "Retail",
+    "location": "Santiago, Las Condes",
+    "followers": 341820,
+    "employees": 14955
+  },
+  "30752": {
+    "name": "Universidade Federal Fluminense",
+    "industries": null,
+    "location": "Niterói, Rio de Janeiro",
+    "followers": 113305,
+    "employees": 4156
+  },
+  "34359": {
+    "name": "Enel Brasil",
+    "industries": "Oil & Energy",
+    "location": "Niterói, Rio  de Janeiro",
+    "followers": 32328,
+    "employees": 1488
+  },
+  "34722": {
+    "name": "Fiocruz",
+    "industries": "Pharmaceuticals",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 16460,
+    "employees": 3846
+  },
+  "38974": {
+    "name": "Globosat",
+    "industries": "Broadcast Media",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 154191,
+    "employees": 1906
+  },
+  "149943": {
+    "name": "UNIRIO",
+    "industries": "Higher Education",
+    "location": null,
+    "followers": 1758,
+    "employees": 931
+  },
+  "162402": {
+    "name": "Cervejaria Ambev",
+    "industries": "Food & Beverages",
+    "location": "São Paulo, SP",
+    "followers": 553430,
+    "employees": 22955
+  },
+  "163306": {
+    "name": "Vale",
+    "industries": "Mining & Metals",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 734642,
+    "employees": 43789
+  },
+  "164735": {
+    "name": "Light",
+    "industries": "Utilities",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 26134,
+    "employees": 2786
+  },
+  "165595": {
+    "name": "Pontifícia Universidade Católica do Rio de Janeiro",
+    "industries": null,
+    "location": "rio de janeiro",
+    "followers": 92690,
+    "employees": 2448
+  },
+  "264362": {
+    "name": "SulAmérica",
+    "industries": "Insurance",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 92802,
+    "employees": 5611
+  },
+  "310806": {
+    "name": "Companhia Siderúrgica Nacional",
+    "industries": "Mining & Metals",
+    "location": "São Paulo, SP",
+    "followers": 126179,
+    "employees": 6657
+  },
+  "333329": {
+    "name": "Itaú Unibanco",
+    "industries": "Banking",
+    "location": "São Paulo, São Paulo",
+    "followers": 660937,
+    "employees": 43785
+  },
+  "372589": {
+    "name": "TIM Brasil",
+    "industries": "Telecommunications",
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 195719,
+    "employees": 10965
+  },
+  "422246": {
+    "name": "Ibmec",
+    "industries": null,
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 111918,
+    "employees": 991
+  },
+  "428415": {
+    "name": "Rede D'Or São Luiz",
+    "industries": "Health, Wellness and Fitness",
+    "location": "Rio de Janeiro",
+    "followers": 67860,
+    "employees": 7904
+  },
+  "546010": {
+    "name": "Universidade do Estado do Rio de Janeiro",
+    "industries": null,
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 74829,
+    "employees": 4735
+  },
+  "654090": {
+    "name": "BTG Pactual",
+    "industries": "Financial Services",
+    "location": "São Paulo, SP",
+    "followers": 110737,
+    "employees": 2614
+  },
+  "671982": {
+    "name": "OAB/RJ",
+    "industries": "Law Enforcement",
+    "location": null,
+    "followers": 7421,
+    "employees": 935
+  },
+  "1121147": {
+    "name": "M. Dias Branco",
+    "industries": "Food Production",
+    "location": "Eusébio, Ceará",
+    "followers": 77516,
+    "employees": 3258
+  },
+  "1159758": {
+    "name": "Universidade Federal Fluminense",
+    "industries": "Government Relations",
+    "location": null,
+    "followers": 6879,
+    "employees": 828
+  },
+  "1226480": {
+    "name": "Marinha do Brasil",
+    "industries": "Military",
+    "location": null,
+    "followers": 22051,
+    "employees": 16387
+  },
+  "1303566": {
+    "name": "Ilumno",
+    "industries": "Information Technology and Services",
+    "location": "Miami, Florida",
+    "followers": 12049,
+    "employees": 692
+  },
+  "1349945": {
+    "name": "Prefeitura da Cidade do Rio de Janeiro",
+    "industries": "Mental Health Care",
+    "location": null,
+    "followers": 7424,
+    "employees": 7198
+  },
+  "2110919": {
+    "name": "MAN Latin America",
+    "industries": "Automotive",
+    "location": "Resende, Rio de Janeiro",
+    "followers": 27370,
+    "employees": 1258
+  },
+  "2683712": {
+    "name": "Universidade Veiga de Almeida",
+    "industries": null,
+    "location": "Rio de Janeiro",
+    "followers": 70278,
+    "employees": 1348
+  },
+  "2848413": {
+    "name": "Estácio",
+    "industries": null,
+    "location": "Território Nacional, Território Nacional",
+    "followers": 493001,
+    "employees": 11124
+  },
+  "2977558": {
+    "name": "Via Varejo SA",
+    "industries": "Retail",
+    "location": "São Caetano do Sul, São Paulo",
+    "followers": 277908,
+    "employees": 22432
+  },
+  "5231945": {
+    "name": "Stone Pagamentos",
+    "industries": "Information Technology and Services",
+    "location": "São Paulo, SP",
+    "followers": 32057,
+    "employees": 2312
+  },
+  "15096711": {
+    "name": "Federal University of the State of Rio de Janeiro",
+    "industries": null,
+    "location": "Rio de Janeiro, Rio de Janeiro",
+    "followers": 11002,
+    "employees": 530
+  }
+}
