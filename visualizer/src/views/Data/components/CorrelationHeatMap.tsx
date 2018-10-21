@@ -1,8 +1,6 @@
 import * as React from 'react'
-import correlationTable from '../../../data/correlationTable.json'
 import ReactHighcharts from 'react-highcharts'
 import HeatMap from 'highcharts/modules/heatmap'
-import { DataByIndustryContext } from '../../../data/dataByIndustry'
 HeatMap(ReactHighcharts.Highcharts)
 
 const formatter = function (this: any) {
@@ -50,16 +48,13 @@ const config = (correlation: any) => ({
   }]
 })
 
-interface Props {
-  industry: string | null
+interface Props extends DataByIndustry {
 }
 
 export class CorrelationHeatMap extends React.PureComponent<Props> {
   render () {
-    return (
-      <DataByIndustryContext.Consumer>
-        {dataByIndustry => <ReactHighcharts config={config(dataByIndustry.correlation)}/>}
-      </DataByIndustryContext.Consumer>
-    )
+    const { correlation } = this.props
+
+    return (<ReactHighcharts config={config(correlation)}/>)
   }
 }

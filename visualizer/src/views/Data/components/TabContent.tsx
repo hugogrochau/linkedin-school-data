@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { CorrelationHeatMap } from './CorrelationHeatMap'
+import { DataByIndustryContext } from '../../../data/dataByIndustry'
 import { Text } from 'grommet'
 
 interface Props {
@@ -9,23 +10,23 @@ interface Props {
 interface State {
 }
 
+type TabComponentMap = { [key: string]: React.ComponentClass<any> }
+const tabComponentMap: TabComponentMap = {
+  correlation: CorrelationHeatMap,
+  companies: CorrelationHeatMap,
+  schools: CorrelationHeatMap
+}
+
 export class TabContent extends React.PureComponent<Props, State> {
   render () {
     const { activeTab } = this.props
 
-    if (activeTab === 'correlation') {
-      return (<CorrelationHeatMap industry='technology' />)
-    }
+    const TabComponent = tabComponentMap[activeTab] || tabComponentMap.correlation
 
-    if (activeTab === 'companies') {
-      return (<Text>companies</Text>)
-    }
-
-    if (activeTab === 'schools') {
-      return (<Text>companies</Text>)
-    }
-
-    throw new Error(`Invalid tab ${activeTab}`)
+    return (
+      <DataByIndustryContext.Consumer>
+        {dataByIndustry => <TabComponent {...dataByIndustry} />}
+      </DataByIndustryContext.Consumer>
+    )
   }
-
 }

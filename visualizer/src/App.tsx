@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, Heading, Paragraph, Button } from 'grommet'
 import { Data } from './views/Data'
-import { dataByIndustry, DataByIndustryContext, DataByIndustry } from './data/dataByIndustry'
+import { dataByIndustry, DataByIndustryContext } from './data/dataByIndustry'
 
 interface Props {
 }

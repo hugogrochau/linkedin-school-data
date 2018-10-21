@@ -1,16 +1,18 @@
 import React from 'react'
 import correlationTable from './correlationTable.json'
+import schoolData from './schoolData.json'
+import companyData from './companyData.json'
 
 const all = {
-  correlation: correlationTable
+  correlation: correlationTable,
+  schoolData,
+  companyData
 }
 
 const technology = {
-  correlation: correlationTable
-}
-
-export interface DataByIndustry {
-  [industry: string]: any
+  correlation: correlationTable,
+  schoolData,
+  companyData
 }
 
 export const dataByIndustry: DataByIndustry = {
