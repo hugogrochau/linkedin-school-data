@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CorrelationHeatMap } from './CorrelationHeatMap'
+import { SchoolData } from './SchoolData'
 import { DataByIndustryContext } from '../../../data/dataByIndustry'
-import { Text } from 'grommet'
 
 interface Props {
   activeTab: string
@@ -14,7 +14,7 @@ type TabComponentMap = { [key: string]: React.ComponentClass<any> }
 const tabComponentMap: TabComponentMap = {
   correlation: CorrelationHeatMap,
   companies: CorrelationHeatMap,
-  schools: CorrelationHeatMap
+  schools: SchoolData
 }
 
 export class TabContent extends React.PureComponent<Props, State> {
