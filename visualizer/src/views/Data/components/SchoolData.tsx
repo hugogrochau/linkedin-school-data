@@ -1,36 +1,40 @@
 import * as React from 'react'
-import { Text, Table, TableHeader, TableRow, TableBody, TableCell } from 'grommet'
+import { DataTable, Text } from 'grommet'
 
 interface Props extends DataByIndustry {
 }
 
 export class SchoolData extends React.PureComponent<Props> {
   render () {
+    const columns = [
+      {
+        property: 'name',
+        header: 'Name',
+        primary: true
+      },
+      {
+        property: 'location',
+        header: 'Location'
+      }
+    ]
+
+    const data = [
+      {
+        name: 'Ghandi', location: 'India'
+      },
+      {
+        name: 'Benjamin', location: 'United States of America'
+      },
+      {
+        name: 'Ned Kelly', location: 'Australia'
+      }
+    ]
+
     return (
-      <Table caption='Simple Table'>
-      <TableHeader>
-        <TableRow>
-          <TableCell scope='col'>
-            <Text>Foo</Text>
-          </TableCell>
-          <TableCell scope='col'>
-            <Text>Bar</Text>
-          </TableCell>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell>
-            <Text>A</Text>
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>
-            <Text>B</Text>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+      <DataTable
+        columns={columns}
+        data={data}
+      />
     )
   }
 }
