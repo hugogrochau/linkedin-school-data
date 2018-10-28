@@ -1,39 +1,40 @@
 import * as React from 'react'
 import { DataTable, Text } from 'grommet'
 
-interface Props extends DataByIndustry {
+interface Props extends IndustryData {
 }
 
 export class SchoolData extends React.PureComponent<Props> {
   render () {
+    const { schoolData } = this.props
     const columns = [
       {
         property: 'name',
-        header: 'Name',
+        header: 'Nome',
         primary: true
       },
       {
         property: 'location',
-        header: 'Location'
-      }
-    ]
-
-    const data = [
-      {
-        name: 'Ghandi', location: 'India'
+        header: 'Localização'
       },
       {
-        name: 'Benjamin', location: 'United States of America'
+        property: 'followers',
+        header: 'Seguidores'
       },
       {
-        name: 'Ned Kelly', location: 'Australia'
+        property: 'employees',
+        header: 'Funcionários'
+      },
+      {
+        property: 'alumni',
+        header: 'Ex-alunos'
       }
     ]
 
     return (
       <DataTable
         columns={columns}
-        data={data}
+        data={schoolData}
       />
     )
   }

@@ -1,7 +1,10 @@
 import React from 'react'
 import correlationTable from './correlationTable.json'
-import schoolData from './schoolData.json'
-import companyData from './companyData.json'
+import { getSchoolData } from './schoolData'
+import { getCompanyData } from './companyData'
+
+const schoolData = getSchoolData()
+const companyData = getCompanyData()
 
 const all = {
   correlation: correlationTable,
@@ -20,4 +23,4 @@ export const dataByIndustry: DataByIndustry = {
   technology
 }
 
-export const DataByIndustryContext = React.createContext<DataByIndustry>(dataByIndustry[0])
+export const DataByIndustryContext = React.createContext<IndustryData>(dataByIndustry.all)

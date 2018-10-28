@@ -16,6 +16,7 @@
     "grommet": "^2.0.0-beta.6",
     "grommet-icons": "^3.0.0",
     "highcharts": "^6.1.3",
+    "ramda": "^0.25.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-highcharts": "^16.0.2",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@types/highcharts": "^5.0.29",
+    "@types/ramda": "^0.25.40",
     "@types/react": "^16.4.11",
     "@types/react-dom": "^16.0.7",
     "awesome-typescript-loader": "^5.2.0",

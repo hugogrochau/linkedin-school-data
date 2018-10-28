@@ -7,6 +7,34 @@ declare module 'highcharts/modules/heatmap'
 
 declare module 'react-highcharts'
 
-declare interface DataByIndustry {
-  [industry: string]: any
+interface IndustryData {
+  correlation: any,
+  schoolData: SchoolData,
+  companyData: CompanyData
 }
+
+type Industry = 'all' | 'technology'
+
+interface DataByIndustry {
+  [industry: string]: IndustryData
+}
+
+interface School {
+  name: string,
+  location: string,
+  followers: string,
+  employees: string,
+  alumni: string
+}
+
+type SchoolData = School[]
+
+interface Company {
+  name: string,
+  location: string,
+  followers: string,
+  employees: string,
+  industries: string
+}
+
+type CompanyData = Company[]

@@ -6,21 +6,20 @@ import { dataByIndustry, DataByIndustryContext } from './data/dataByIndustry'
 interface Props {
 }
 
-type Industry = 'all' | 'technology' | null
-
 interface State {
-  industry: Industry,
-  data: DataByIndustry
+  industry?: Industry,
+  data: IndustryData
 }
 
 export class App extends React.PureComponent<Props, State> {
   state = {
-    industry: null,
-    data: dataByIndustry[0]
+    industry: undefined,
+    data: dataByIndustry.all
   }
 
   selectIndustry = (industry: Industry) => () => {
-    this.setState({ industry, data: dataByIndustry[industry || 0] })
+    const data = dataByIndustry[industry] || dataByIndustry.all
+    this.setState({ industry, data })
   }
 
   render () {
