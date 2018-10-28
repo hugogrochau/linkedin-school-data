@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { CorrelationHeatMap } from './CorrelationHeatMap'
 import { SchoolData } from './SchoolData'
+import { CompanyData } from './CompanyData'
+
 import { DataByIndustryContext } from '../../../data/dataByIndustry'
 
 interface Props {
@@ -13,7 +15,7 @@ interface State {
 type TabComponentMap = { [key: string]: React.ComponentClass<any> }
 const tabComponentMap: TabComponentMap = {
   correlation: CorrelationHeatMap,
-  companies: CorrelationHeatMap,
+  companies: CompanyData,
   schools: SchoolData
 }
 
