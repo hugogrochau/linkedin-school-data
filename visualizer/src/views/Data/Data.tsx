@@ -38,7 +38,7 @@ export class Data extends React.PureComponent<Props, State> {
     const { activeTab } = this.state
 
     return (
-      <Box align='center'>
+      <Box align='center' gap='large'>
         <Heading>Indústria: {industryLabels[industry || 'all']}</Heading>
         <Tabs onActive={this.updateActiveTab}>
           <Tab title='Tabela de correlação' />
