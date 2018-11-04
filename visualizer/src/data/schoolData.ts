@@ -7,3 +7,16 @@ const schoolDataFormatter = R.pipe(
 )
 
 export const getSchoolData = (): SchoolData => schoolDataFormatter(schoolDataJson) as SchoolData
+
+interface SchoolDataByName {
+  [name: string]: School
+}
+export const getSchoolDataByName = (): SchoolDataByName => {
+  const schoolData = getSchoolData()
+  const schoolsByName = R.pipe(
+    R.map((school: School) => ({ [school.name]: school })),
+    R.mergeAll
+  )(schoolData)
+
+  return schoolsByName as SchoolDataByName
+}

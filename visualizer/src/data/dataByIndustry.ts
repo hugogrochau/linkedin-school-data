@@ -1,19 +1,23 @@
 import React from 'react'
-import correlationTable from './correlationTable.json'
+import { getCorrelationTableWeighted, getCorrelationTable } from './correlationTable'
 import { getSchoolData } from './schoolData'
 import { getCompanyData } from './companyData'
 
 const schoolData = getSchoolData()
 const companyData = getCompanyData()
+const correlation = getCorrelationTable()
+const correlationWeighted = getCorrelationTableWeighted()
 
 const all = {
-  correlation: correlationTable,
+  correlation,
+  correlationWeighted,
   schoolData,
   companyData
 }
 
 const technology = {
-  correlation: correlationTable,
+  correlation,
+  correlationWeighted,
   schoolData,
   companyData
 }

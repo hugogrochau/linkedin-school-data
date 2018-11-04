@@ -12,11 +12,12 @@ interface Props {
 interface State {
 }
 
-type TabComponentMap = { [key: string]: React.ComponentClass<any> }
+type TabComponentMap = { [key: string]: ({}: any) => any }
 const tabComponentMap: TabComponentMap = {
-  correlation: CorrelationHeatMap,
-  companies: CompanyData,
-  schools: SchoolData
+  correlation: (dataByIndustry) => <CorrelationHeatMap {...dataByIndustry} />,
+  correlationWeighted: (dataByIndustry) => <CorrelationHeatMap {...dataByIndustry} weighted={true} />,
+  companies: (dataByIndustry) => <CompanyData {...dataByIndustry} />,
+  schools: (dataByIndustry) => <SchoolData {...dataByIndustry} />
 }
 
 export class TabContent extends React.PureComponent<Props, State> {
@@ -27,7 +28,7 @@ export class TabContent extends React.PureComponent<Props, State> {
 
     return (
       <DataByIndustryContext.Consumer>
-        {dataByIndustry => <TabComponent {...dataByIndustry} />}
+        {TabComponent}
       </DataByIndustryContext.Consumer>
     )
   }
