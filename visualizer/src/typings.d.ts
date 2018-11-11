@@ -10,9 +10,11 @@ declare module 'react-highcharts'
 declare module 'react-graph-vis'
 
 interface IndustryData {
-  correlation: any,
+  correlation: CorrelationTable,
+  correlationWeighted: CorrelationTable,
   schoolData: SchoolData,
-  companyData: CompanyData
+  companyData: CompanyData,
+  correlationGraph: CorrelationGraph
 }
 
 type Industry = 'all' | 'technology'
@@ -22,6 +24,7 @@ interface DataByIndustry {
 }
 
 interface School {
+  id: number,
   name: string,
   location: string,
   followers: string,
@@ -31,7 +34,12 @@ interface School {
 
 type SchoolData = School[]
 
+interface SchoolDataByName {
+  [name: string]: School
+}
+
 interface Company {
+  id: number,
   name: string,
   location: string,
   followers: string,
@@ -40,3 +48,33 @@ interface Company {
 }
 
 type CompanyData = Company[]
+
+interface CompanyDataByName {
+  [name: string]: Company
+}
+
+type CorrelationItem = [number, number, number]
+
+interface CorrelationTable {
+  schools: string[],
+  companies: string[],
+  correlation: CorrelationItem[]
+}
+
+interface CorrelationNode {
+  id: number,
+  value: number,
+  label: string
+}
+
+interface CorrelationEdge {
+  from: number,
+  to: number,
+  value: number,
+  title: string
+}
+
+interface CorrelationGraph {
+  nodes: CorrelationNode[],
+  edges: CorrelationEdge[]
+}

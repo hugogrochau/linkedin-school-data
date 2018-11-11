@@ -53,7 +53,8 @@ const config = (correlation: any, formatter: () => string) => ({
   }]
 })
 
-interface Props extends DataByIndustry {
+interface Props extends IndustryData {
+  weighted: string
 }
 
 export class CorrelationHeatMap extends React.PureComponent<Props> {
