@@ -7,6 +7,8 @@ declare module 'highcharts/modules/heatmap'
 
 declare module 'react-highcharts'
 
+declare module 'react-graph-vis'
+
 interface IndustryData {
   correlation: any,
   schoolData: SchoolData,

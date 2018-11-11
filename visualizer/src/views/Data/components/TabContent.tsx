@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CorrelationHeatMap } from './CorrelationHeatMap'
 import { SchoolData } from './SchoolData'
 import { CompanyData } from './CompanyData'
+import { CorrelationGraph } from './CorrelationGraph'
 
 import { DataByIndustryContext } from '../../../data/dataByIndustry'
 
@@ -14,6 +15,7 @@ interface State {
 
 type TabComponentMap = { [key: string]: ({}: any) => any }
 const tabComponentMap: TabComponentMap = {
+  graph: (dataByIndustry) => <CorrelationGraph {...dataByIndustry} />,
   correlation: (dataByIndustry) => <CorrelationHeatMap {...dataByIndustry} />,
   correlationWeighted: (dataByIndustry) => <CorrelationHeatMap {...dataByIndustry} weighted={true} />,
   companies: (dataByIndustry) => <CompanyData {...dataByIndustry} />,
