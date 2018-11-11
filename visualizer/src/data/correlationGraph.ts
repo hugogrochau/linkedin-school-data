@@ -20,11 +20,22 @@ export const getCorrelationGraph = (): CorrelationGraph => {
     ...filteredCompanyNodes
   ]
 
-  console.log('nodes', nodes)
-
   const edges = generateEdges(correlation, schoolDataByName, companyDataByName, schools, companies)
 
   return { nodes, edges }
+}
+
+const schoolColor = {
+  border: '#FFA91B',
+  background: '#FFD58F',
+  highlight: {
+    border: '#FFA91B',
+    background: '#FFECCE'
+  },
+  hover: {
+    border: '#FFA91B',
+    background: '#FFECCE'
+  }
 }
 
 const generateSchoolNodes = (schools: string[], schoolData: SchoolDataByName): CorrelationNode[] => {
@@ -35,7 +46,8 @@ const generateSchoolNodes = (schools: string[], schoolData: SchoolDataByName): C
     return {
       id,
       label: school,
-      value: parseInt(alumni, 10)
+      value: parseInt(alumni, 10),
+      color: schoolColor
     }
   })
 

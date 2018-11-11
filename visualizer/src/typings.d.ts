@@ -64,7 +64,8 @@ interface CorrelationTable {
 interface CorrelationNode {
   id: number,
   value: number,
-  label: string
+  label: string,
+  color?: any
 }
 
 interface CorrelationEdge {
