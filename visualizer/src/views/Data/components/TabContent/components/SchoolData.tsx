@@ -35,6 +35,7 @@ export class SchoolData extends React.PureComponent<Props> {
       <DataTable
         columns={columns}
         data={schoolData}
+        sortable={true}
       />
     )
   }

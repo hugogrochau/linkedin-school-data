@@ -18,9 +18,9 @@ const industryLabels = {
 type Tabs = { [key: number]: string }
 
 const tabs: Tabs = {
-  0: 'graph',
-  1: 'correlation',
-  2: 'correlationWeighted',
+  0: 'correlation',
+  1: 'correlationWeighted',
+  2: 'graph',
   3: 'companies',
   4: 'schools'
 }
@@ -42,9 +42,9 @@ export class Data extends React.PureComponent<Props, State> {
       <Box align='center' gap='large'>
         <Heading>Indústria: {industryLabels[industry || 'all']}</Heading>
         <Tabs onActive={this.updateActiveTab}>
-          <Tab title='Grafo' />
           <Tab title='Tabela de correlação' />
           <Tab title='Tabela de correlação (com peso)' />
+          <Tab title='Grafo' />
           <Tab title='Empresas' />
           <Tab title='Faculdades' />
         </Tabs>

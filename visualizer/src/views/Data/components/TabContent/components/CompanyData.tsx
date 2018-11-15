@@ -35,6 +35,7 @@ export class CompanyData extends React.PureComponent<Props> {
       <DataTable
         columns={columns}
         data={companyData}
+        sortable={true}
       />
     )
   }

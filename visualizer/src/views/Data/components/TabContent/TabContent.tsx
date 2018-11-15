@@ -15,9 +15,9 @@ interface State {
 
 type TabComponentMap = { [key: string]: ({}: any) => any }
 const tabComponentMap: TabComponentMap = {
-  graph: (dataByIndustry) => <CorrelationGraph {...dataByIndustry} />,
   correlation: (dataByIndustry) => <CorrelationHeatMap {...dataByIndustry} />,
   correlationWeighted: (dataByIndustry) => <CorrelationHeatMap {...dataByIndustry} weighted={true} />,
+  graph: (dataByIndustry) => <CorrelationGraph {...dataByIndustry} />,
   companies: (dataByIndustry) => <CompanyData {...dataByIndustry} />,
   schools: (dataByIndustry) => <SchoolData {...dataByIndustry} />
 }
