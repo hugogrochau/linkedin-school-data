@@ -30,7 +30,7 @@ export class App extends React.PureComponent<Props, State> {
         <Box margin='xlarge' align='center'>
           <Heading size='large'>Correlação entre faculdades e empresas</Heading>
           <Paragraph size='xlarge' textAlign='center'>
-              A partir do LinkedIn, foi possível extrair dados indicando a relação entre universidades e empresas do mercado.
+            A partir do LinkedIn, foi possível extrair dados indicando a relação entre universidades e empresas do mercado.
           </Paragraph>
           <Heading size='small' textAlign='center'>Escolha uma indústria abaixo para iniciar a visualização</Heading>
           <Box gap='medium' direction='row'>

@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { CorrelationHeatMap } from './CorrelationHeatMap'
-import { SchoolData } from './SchoolData'
-import { CompanyData } from './CompanyData'
-import { CorrelationGraph } from './CorrelationGraph'
+import { CorrelationHeatMap } from './components/CorrelationHeatMap'
+import { SchoolData } from './components/SchoolData'
+import { CompanyData } from './components/CompanyData'
+import { CorrelationGraph } from './components/CorrelationGraph/CorrelationGraph'
 
-import { DataByIndustryContext } from '../../../data/dataByIndustry'
+import { DataByIndustryContext } from '../../../../data/dataByIndustry'
 
 interface Props {
   activeTab: string

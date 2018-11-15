@@ -4,6 +4,8 @@ import Graph from 'react-graph-vis'
 interface Props extends IndustryData {
 }
 
+// window.gravitationalConstant = -26
+
 const options = {
   autoResize: true,
   nodes: {
@@ -22,15 +24,15 @@ const options = {
   },
   physics: {
     forceAtlas2Based: {
-      gravitationalConstant: -26,
-      centralGravity: 0.005,
-      springLength: 230,
-      springConstant: 0.18
+      gravitationalConstant: -100,
+      centralGravity: 0.065,
+      springLength: 0,
+      springConstant: 0
     },
     maxVelocity: 146,
     solver: 'forceAtlas2Based',
     timestep: 0.35,
-    stabilization: { iterations: 150 }
+    stabilization: { iterations: 250 }
   },
   layout: {
     improvedLayout: true,
@@ -44,7 +46,9 @@ export class CorrelationGraph extends React.PureComponent<Props> {
   render () {
     const { correlationGraph } = this.props
     return(
-      <Graph graph={correlationGraph} options={options} style={style} />
+      <>
+        <Graph graph={correlationGraph} options={options} style={style} />
+      </>
     )
   }
 }
