@@ -42,8 +42,8 @@ export class Data extends React.PureComponent<Props, State> {
       <Box align='center' gap='large'>
         <Heading>Indústria: {industryLabels[industry || 'all']}</Heading>
         <Tabs onActive={this.updateActiveTab}>
-          <Tab title='Tabela de correlação' />
-          <Tab title='Tabela de correlação (com peso)' />
+          <Tab title='Tabela de correlação (absoluto)' />
+          <Tab title='Tabela de correlação (percentual)' />
           <Tab title='Grafo' />
           <Tab title='Empresas' />
           <Tab title='Faculdades' />
