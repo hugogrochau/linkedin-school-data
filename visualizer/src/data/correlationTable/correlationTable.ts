@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import correlationTableJson from './correlationTable.json'
 
-import { getSchoolDataByName } from './schoolData'
+import { getSchoolDataByName } from '../schoolData/schoolData'
 
 export const getCorrelationTable = (): CorrelationTable => {
   const { schools, companies, correlation } = correlationTableJson

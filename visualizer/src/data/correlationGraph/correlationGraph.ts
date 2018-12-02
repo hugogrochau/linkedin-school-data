@@ -1,9 +1,8 @@
 import * as R from 'ramda'
-import correlationTableJson from './correlationTable.json'
 
-import { getSchoolDataByName } from './schoolData'
-import { getCompanyDataByName } from './companyData'
-import { getCorrelationTableWeighted } from './correlationTable'
+import { getSchoolDataByName } from '../schoolData/schoolData'
+import { getCompanyDataByName } from '../companyData/companyData'
+import { getCorrelationTableWeighted } from '../correlationTable/correlationTable'
 
 export const getCorrelationGraph = (): CorrelationGraph => {
   const { schools, companies, correlation } = getCorrelationTableWeighted()

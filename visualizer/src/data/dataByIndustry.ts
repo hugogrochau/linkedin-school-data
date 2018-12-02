@@ -1,8 +1,8 @@
 import React from 'react'
-import { getCorrelationTableWeighted, getCorrelationTable } from './correlationTable'
-import { getSchoolData } from './schoolData'
-import { getCompanyData } from './companyData'
-import { getCorrelationGraph } from './correlationGraph'
+import { getCorrelationTableWeighted, getCorrelationTable } from './correlationTable/correlationTable'
+import { getSchoolData } from './schoolData/schoolData'
+import { getCompanyData } from './companyData/companyData'
+import { getCorrelationGraph } from './correlationGraph/correlationGraph'
 
 const schoolData = getSchoolData()
 const companyData = getCompanyData()
