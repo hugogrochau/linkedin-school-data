@@ -1,10 +1,11 @@
 import * as R from 'ramda'
-import correlationTableJson from './correlationTable.json'
+import correlationTableITJson from './correlationTableIT.json'
+import correlationTableAllJson from './correlationTableAll.json'
 
 import { getSchoolDataByName } from '../schoolData/schoolData'
 
-export const getCorrelationTable = (): CorrelationTable => {
-  const { schools, companies, correlation } = correlationTableJson
+export const getCorrelationTable = (tech?: boolean): CorrelationTable => {
+  const { schools, companies, correlation } = tech ? correlationTableITJson : correlationTableAllJson
   const sortedSchools = R.sort(R.ascend(R.identity), schools) as string[]
   const sortedCompanies = R.sort(R.descend(R.identity), companies) as string[]
 
@@ -37,8 +38,8 @@ const getChangedIndexes = (oldArray: any[], newArray: any[]): {[oldIndex: number
   return R.mergeAll(newIndexes)
 }
 
-export const getCorrelationTableWeighted = () => {
-  const correlationTable = getCorrelationTable()
+export const getCorrelationTableWeighted = (tech?: boolean) => {
+  const correlationTable = getCorrelationTable(tech)
   const { correlation, schools } = correlationTable
 
   const weightedCorrelation = correlation.map(weightCorrelation(schools))

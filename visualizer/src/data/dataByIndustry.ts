@@ -6,24 +6,21 @@ import { getCorrelationGraph } from './correlationGraph/correlationGraph'
 
 const schoolData = getSchoolData()
 const companyData = getCompanyData()
-const correlation = getCorrelationTable()
-const correlationWeighted = getCorrelationTableWeighted()
-const correlationGraph = getCorrelationGraph()
 
 const all = {
-  correlation,
-  correlationWeighted,
+  correlation: getCorrelationTable(),
+  correlationWeighted: getCorrelationTableWeighted(),
   schoolData,
   companyData,
-  correlationGraph
+  correlationGraph: getCorrelationGraph()
 }
 
 const technology = {
-  correlation,
-  correlationWeighted,
+  correlation: getCorrelationTable(true),
+  correlationWeighted: getCorrelationTableWeighted(true),
   schoolData,
   companyData,
-  correlationGraph
+  correlationGraph: getCorrelationGraph(true)
 }
 
 export const dataByIndustry: DataByIndustry = {

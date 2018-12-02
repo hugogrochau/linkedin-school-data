@@ -4,8 +4,8 @@ import { getSchoolDataByName } from '../schoolData/schoolData'
 import { getCompanyDataByName } from '../companyData/companyData'
 import { getCorrelationTableWeighted } from '../correlationTable/correlationTable'
 
-export const getCorrelationGraph = (): CorrelationGraph => {
-  const { schools, companies, correlation } = getCorrelationTableWeighted()
+export const getCorrelationGraph = (tech?: boolean): CorrelationGraph => {
+  const { schools, companies, correlation } = getCorrelationTableWeighted(tech)
   const schoolDataByName = getSchoolDataByName()
   const companyDataByName = getCompanyDataByName()
 
